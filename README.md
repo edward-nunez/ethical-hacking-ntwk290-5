@@ -51,6 +51,10 @@ Clone this repository and build the image locally:
 git clone https://github.com/<username>/ethical-hacking-ntwk290-5.git
 cd ethical-hacking-ntwk290-5
 docker compose build
+
+docker tag kali-ntwk290-lab:latest <username>/kali-ntwk290-lab:latest
+
+docker push <username>/kali-ntwk290-lab:latest
 ```
 
 Then start the lab using the scripts above.
