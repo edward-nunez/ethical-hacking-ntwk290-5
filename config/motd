@@ -1,0 +1,42 @@
+╔═══════════════════════════════════════════════════════════════════════════╗
+║                                                                           ║
+║                    ETHICAL HACKING LAB - NTWK290-5                        ║
+║                      Kali Linux Penetration Testing                       ║
+║                                                                           ║
+╚═══════════════════════════════════════════════════════════════════════════╝
+
+📚 Quick Reference Commands:
+   
+   Navigation:
+   • work           → Go to workspace directory
+   • labs           → Go to labs directory
+   • targets        → Show vulnerable target URLs
+   
+   Scanning:
+   • quickscan      → Fast network discovery (nmap -sn)
+   • portscan       → Full port scan (nmap -p-)
+   • servicescan    → Service version detection (nmap -sV -sC)
+   
+   Web Testing:
+   • dirbust [url]  → Directory brute-forcing with gobuster
+   • nikto-scan [url] → Web server scanner
+   
+   Targets:
+   • DVWA:          http://localhost:8080 (172.20.0.2:80)
+   • Juice Shop:    http://localhost:3000 (172.20.0.3:3000)
+
+📁 Workspace Structure:
+   • /root/workspace/         → Your coursework (persistent)
+   • /root/workspace/labs/    → Lab assignments
+   • /root/workspace/reports/ → Lab reports
+   • /usr/share/wordlists/    → Built-in wordlists
+
+💡 Tips:
+   • Type 'alias' to see all available shortcuts
+   • Use Tab for auto-completion
+   • Your work is automatically saved to ./workspace/
+   • Check 'man <tool>' for tool documentation
+
+🔒 Remember: Use these tools ethically and only on authorized targets!
+
+───────────────────────────────────────────────────────────────────────────────

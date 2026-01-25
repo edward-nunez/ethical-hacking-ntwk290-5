@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  kali:
+    build: .
+    image: kali-ntwk290-lab:latest
+    container_name: kali-lab
+    hostname: kali
+    stdin_open: true      # -i flag
+    tty: true             # -t flag
+    privileged: true      # Required for some network tools
+    
+    # Default to bridge network (can be overridden at runtime)
+    networks:
+      - pentest-net
+    
+    volumes:
+      # Persist coursework
+      - ./workspace:/root/workspace
+      # Persist wordlists
+      - ./wordlists:/usr/share/wordlists/custom
+      # Persist tool configurations
+      - kali-config:/root/.config
+      # Persist bash history
+      - kali-history:/root/.bash_history_data
+      
+    cap_add:
+      - NET_ADMIN         # Network administration
+      - NET_RAW           # Raw socket access (for nmap, etc.)
+      - SYS_PTRACE        # For debugging tools
+      
+    environment:
+      - TERM=xterm-256color
+      - HISTFILE=/root/.bash_history_data/.bash_history
+
+  # Vulnerable target: DVWA (Damn Vulnerable Web Application)
+  dvwa:
+    image: vulnerables/web-dvwa
+    container_name: dvwa-target
+    ports:
+      - "8080:80"
+    networks:
+      - pentest-net
+    restart: unless-stopped
+
+  # Vulnerable target: OWASP Juice Shop
+  juice-shop:
+    image: bkimminich/juice-shop
+    container_name: juice-shop-target
+    ports:
+      - "3000:3000"
+    networks:
+      - pentest-net
+    restart: unless-stopped
+
+volumes:
+  kali-config:
+  kali-history:
+
+networks:
+  pentest-net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
