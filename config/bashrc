@@ -39,3 +39,4 @@ export VISUAL=vim
 if [ -d "/root/scripts" ]; then
     export PATH="/root/scripts:$PATH"
 fi
+
